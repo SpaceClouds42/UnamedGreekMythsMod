@@ -4,8 +4,8 @@ import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectType
 
-class PetrifactionEffect : StatusEffect(StatusEffectType.HARMFUL, 0x4f3d25) {
-    val petrificationDamage = PetrifactionDamage()
+class PetrificationEffect : StatusEffect(StatusEffectType.HARMFUL, 0x4f3d25) {
+    val petrificationDamage = PetrificationDamage()
 
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
         // TODO: Testing effect, remove/adapt later
