@@ -1,0 +1,8 @@
+{
+  "package": "us.spaceclouds42.greek.myths.mixin",
+  "compatibilityLevel": "JAVA_16",
+
+  "mixins": [
+    "EmptyJavaMixin"
+  ]
+}
