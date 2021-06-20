@@ -7,8 +7,6 @@ val languageAdapterVersion: String by project
 val modVersion: String by project
 val mavenGroup: String by project
 val archivesBaseName: String by project
-val ekhoVersion: String by project
-val configVersion: String by project
 
 project.version = modVersion
 project.group = mavenGroup
@@ -20,7 +18,6 @@ plugins {
     id("org.jetbrains.dokka")
     kotlin("jvm")
     kotlin("kapt")
-    kotlin("plugin.serialization")
 }
 
 repositories {

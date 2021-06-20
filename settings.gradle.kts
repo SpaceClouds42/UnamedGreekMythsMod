@@ -5,7 +5,6 @@ pluginManagement {
     val kotlinVersion: String by settings
     val kaptVersion: String by settings
     // val ktMixinVersion: String by settings
-    val kotlinxPluginVersion: String by settings
 
     repositories {
         maven {
@@ -33,7 +32,6 @@ pluginManagement {
         // id("org.spaceserve.kotlin-mixins") version ktMixinVersion
         kotlin("jvm") version kotlinVersion
         kotlin("kapt") version kaptVersion
-        kotlin("plugin.serialization") version kotlinxPluginVersion
     }
 }
 
