@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "greek-myths",
+  "id": "greekmyths",
   "version": "${version}",
   "name": "Greek Myths",
   "description": "Greek Myths",
@@ -14,7 +14,7 @@
     "issues": ""
   },
   "license": "LGPL-3.0",
-  "icon": "assets/greek/myths/icon.png",
+  "icon": "assets/greekmyths/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -25,7 +25,7 @@
     ]
   },
   "mixins": [
-    "greek-myths.mixins.json"
+    "greekmyths.mixins.json"
   ],
 
   "depends": {
