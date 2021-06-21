@@ -11,7 +11,7 @@ import us.spaceclouds42.greek.myths.effect.PetrificationEffect
 
 object Common : ModInitializer {
     val LOGGER: Logger = LogManager.getLogger("UnamedGreekMythsMod")
-    val MOD_ID = "greekmyths"
+    const val MOD_ID = "greekmyths"
 
     override fun onInitialize() {
         LOGGER.info("Initializing!")
