@@ -8,12 +8,8 @@ import us.spaceclouds42.greek.myths.util.combined
 import kotlin.random.Random
 
 class PetrificationEffect : StatusEffect(StatusEffectType.HARMFUL, 0x4f3d25) {
-    val petrificationDamage = PetrificationDamage()
-
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
         if (entity.hurtTime <= 0 && !entity.isInvulnerable) {
-            entity.damage(petrificationDamage, 1.0f)
-
             if (entity is PlayerEntity && !entity.world.isClient && !entity.isCreative && !entity.isSpectator) {
                 val combined = entity.inventory.combined
                 repeat(4) {
