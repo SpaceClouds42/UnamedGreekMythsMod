@@ -1,6 +1,5 @@
 package us.spaceclouds42.greek.myths
 
-import jdk.jshell.Snippet
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
@@ -74,6 +73,15 @@ object Common : ModInitializer {
 
     private fun registerItems() {
         Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.medusa"), Items.STATUE_MEDUSA)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.head"), Items.STATUE_HEAD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.body"), Items.STATUE_BODY)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.arm"), Items.STATUE_ARM)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.leg"), Items.STATUE_LEG)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "medusa.head"), Items.MEDUSA_HEAD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "flesh.gorgon"), Items.GORGON_FLESH)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "flesh.player"), Items.PLAYER_FLESH)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "blood.gorgon"), Items.GORGON_BLOOD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "blood.player"), Items.PLAYER_BLOOD)
     }
 
     object EntityType {
