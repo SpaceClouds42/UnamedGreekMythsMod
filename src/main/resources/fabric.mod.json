@@ -22,6 +22,11 @@
       {
         "value": "us.spaceclouds42.greek.myths.Common::INSTANCE"
       }
+    ],
+    "client": [
+      {
+        "value": "us.spaceclouds42.greek.myths.Client::INSTANCE"
+      }
     ]
   },
   "mixins": [
