@@ -1,0 +1,48 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "greekmyths:block/statue_arm",
+		"particle": "greekmyths:block/statue_arm"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 6],
+			"to": [4, 12, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 6], "texture": "#0"},
+				"east": {"uv": [2, 0, 4, 6], "texture": "#0"},
+				"south": {"uv": [4, 0, 6, 6], "texture": "#0"},
+				"west": {"uv": [0, 6, 2, 12], "texture": "#0"},
+				"up": {"uv": [8, 2, 6, 0], "texture": "#0"},
+				"down": {"uv": [4, 6, 2, 8], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [5.88, 4.02, -1.5],
+			"scale": [0.98, 1, 1]
+		},
+		"thirdperson_lefthand": {
+			"translation": [-5.88, 4.02, -1.5],
+			"scale": [0.98, 1, 1]
+		},
+		"firstperson_righthand": {
+			"translation": [3.5, 1.5, -0.5]
+		},
+		"firstperson_lefthand": {
+			"translation": [-3.5, 1.5, -2]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"translation": [6.25, 2.25, 1]
+		},
+		"head": {
+			"rotation": [0, -89, 0],
+			"translation": [0, 14, 6.25]
+		}
+	}
+}

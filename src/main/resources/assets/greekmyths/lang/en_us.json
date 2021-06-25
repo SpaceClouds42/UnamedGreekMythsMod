@@ -1,0 +1,22 @@
+{
+  "entity.greekmyths.medusa": "Medusa",
+  "entity.greekmyths.stheno": "Stheno",
+  "entity.greekmyths.euryale": "Euryale",
+  "entity.greekmyths.stone_golem": "Stone Golem",
+  "effect.greekmyths.petrification": "Petrification",
+  "block.greekmyths.statue_upper": "Statue Top",
+  "block.greekmyths.statue_lower": "Statue Bottom",
+  "block.greekmyths.statue_table": "Statue Animator",
+  "block.greekmyths.medusa_statue": "Dried Medusa's Head",
+  "item.greekmyths.statue_head": "Petrified Head",
+  "item.greekmyths.statue_body": "Petrified Body",
+  "item.greekmyths.statue_arm": "Petrified Arm",
+  "item.greekmyths.statue_leg": "Petrified Leg",
+  "item.greekmyths.medusa_head": "Medusa's Head",
+  "item.greekmyths.gorgon_flesh": "Gorgon Flesh",
+  "item.greekmyths.player_flesh": "%s's Flesh",
+  "item.greekmyths.gorgon_blood": "Bottle of Gorgon Blood",
+  "item.greekmyths.player_blood": "Bottle of %s's Blood",
+  "item.greekmyths.blade": "Infused %s Blade",
+  "itemGroup.greekmyths.main": "Greek Myths"
+}

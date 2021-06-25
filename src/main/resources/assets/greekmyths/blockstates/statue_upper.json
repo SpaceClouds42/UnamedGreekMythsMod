@@ -1,0 +1,38 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "left_arm": "true"
+      },
+      "apply": {
+        "model": "greekmyths:block/statue_arm",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "right_arm": "true"
+      },
+      "apply": {
+        "model": "greekmyths:block/statue_arm"
+      }
+    },
+    {
+      "when": {
+        "head": "true"
+      },
+      "apply": {
+        "model": "greekmyths:block/statue_arm",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "torso": "true"
+      },
+      "apply": {
+        "model": "greekmyths:block/statue_arm"
+      }
+    }
+  ]
+}

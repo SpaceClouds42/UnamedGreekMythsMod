@@ -1,0 +1,33 @@
+{
+  "type": "minceraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "greekmyths:statue_arm",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion",
+                  "predicate": {
+                    "block_state_property": {
+                      "block": "greekmyths:statue_upper",
+                      "properties": {
+                        "left_arm": "true"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 0,
+      "bonus_rolls": 0.0
+    }
+  ]
+}
