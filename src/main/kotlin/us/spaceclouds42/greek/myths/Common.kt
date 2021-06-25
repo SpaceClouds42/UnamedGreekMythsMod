@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilde
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.Block
+import net.minecraft.block.Blocks
 import net.minecraft.block.Material
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EquipmentSlot
@@ -26,6 +27,7 @@ import org.apache.logging.log4j.Logger
 import software.bernie.geckolib3.GeckoLib
 import us.spaceclouds42.greek.myths.block.MedusaStatue
 import us.spaceclouds42.greek.myths.block.StatueLowerHalf
+import us.spaceclouds42.greek.myths.block.StatueTable
 import us.spaceclouds42.greek.myths.block.StatueUpperHalf
 import us.spaceclouds42.greek.myths.effect.PetrifactionEffect
 import us.spaceclouds42.greek.myths.entity.golem.StoneGolem
@@ -84,6 +86,7 @@ object Common : ModInitializer {
         Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue_upper"), Blocks.STATUE_UPPER_HALF)
         Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue_lower"), Blocks.STATUE_LOWER_HALF)
         Registry.register(Registry.BLOCK, Identifier(MOD_ID, "medusa_statue"), Blocks.STATUE_MEDUSA)
+        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue_table"), Blocks.STATUE_TABLE)
     }
 
     private fun registerItems() {
@@ -170,6 +173,8 @@ object Common : ModInitializer {
         val STATUE_LOWER_HALF = StatueLowerHalf(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
 
         val STATUE_MEDUSA = MedusaStatue(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
+
+        val STATUE_TABLE = StatueTable(FabricBlockSettings.copyOf(net.minecraft.block.Blocks.SMITHING_TABLE))
     }
 
     object Items {
