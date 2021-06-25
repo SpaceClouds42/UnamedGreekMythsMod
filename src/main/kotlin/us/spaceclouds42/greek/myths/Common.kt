@@ -4,23 +4,31 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.Block
 import net.minecraft.block.Material
 import net.minecraft.entity.EntityDimensions
+import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.HostileEntity
+import net.minecraft.entity.passive.IronGolemEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.FoodComponents.*
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import software.bernie.geckolib3.GeckoLib
+import us.spaceclouds42.greek.myths.block.MedusaStatue
+import us.spaceclouds42.greek.myths.block.StatueLowerHalf
+import us.spaceclouds42.greek.myths.block.StatueUpperHalf
 import us.spaceclouds42.greek.myths.effect.PetrifactionEffect
+import us.spaceclouds42.greek.myths.entity.golem.StoneGolem
 import us.spaceclouds42.greek.myths.entity.gorgon.Euryale
 import us.spaceclouds42.greek.myths.entity.gorgon.Medusa
 import us.spaceclouds42.greek.myths.entity.gorgon.Stheno
@@ -63,25 +71,53 @@ object Common : ModInitializer {
         FabricDefaultAttributeRegistry.register(EntityType.MEDUSA, gorgonAttributes)
         FabricDefaultAttributeRegistry.register(EntityType.STHENO, gorgonAttributes)
         FabricDefaultAttributeRegistry.register(EntityType.EURYALE, gorgonAttributes)
+
+        FabricDefaultAttributeRegistry.register(
+            EntityType.STONE_GOLEM,
+            IronGolemEntity
+                .createIronGolemAttributes()
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 9.0)
+        )
     }
 
     private fun registerBlocks() {
-        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue.upper"), Blocks.STATUE_UPPER_HALF)
-        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue.lower"), Blocks.STATUE_LOWER_HALF)
-        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue.medusa"), Blocks.STATUE_MEDUSA)
+        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue_upper"), Blocks.STATUE_UPPER_HALF)
+        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "statue_lower"), Blocks.STATUE_LOWER_HALF)
+        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "medusa_statue"), Blocks.STATUE_MEDUSA)
     }
 
     private fun registerItems() {
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.medusa"), Items.STATUE_MEDUSA)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.head"), Items.STATUE_HEAD)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.body"), Items.STATUE_BODY)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.arm"), Items.STATUE_ARM)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue.leg"), Items.STATUE_LEG)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "medusa.head"), Items.MEDUSA_HEAD)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "flesh.gorgon"), Items.GORGON_FLESH)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "flesh.player"), Items.PLAYER_FLESH)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "blood.gorgon"), Items.GORGON_BLOOD)
-        Registry.register(Registry.ITEM, Identifier(MOD_ID, "blood.player"), Items.PLAYER_BLOOD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "medusa_statue"), Items.STATUE_MEDUSA)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue_head"), Items.STATUE_HEAD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue_body"), Items.STATUE_BODY)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue_arm"), Items.STATUE_ARM)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "statue_leg"), Items.STATUE_LEG)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "medusa_head"), Items.MEDUSA_HEAD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "gorgon_flesh"), Items.GORGON_FLESH)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "player_flesh"), Items.PLAYER_FLESH)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "gorgon_blood"), Items.GORGON_BLOOD)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "player_blood"), Items.PLAYER_BLOOD)
+
+        FabricItemGroupBuilder
+            .create(Identifier(MOD_ID, "main"))
+            .icon { ItemStack(Items.MEDUSA_HEAD) }
+            .appendItems {
+                it.addAll(
+                    listOf(
+                        ItemStack(Items.MEDUSA_HEAD),
+                        ItemStack(Items.STATUE_MEDUSA),
+                        ItemStack(Items.STATUE_HEAD),
+                        ItemStack(Items.STATUE_ARM),
+                        ItemStack(Items.STATUE_BODY),
+                        ItemStack(Items.STATUE_LEG),
+                        ItemStack(Items.GORGON_FLESH),
+                        ItemStack(Items.GORGON_BLOOD),
+                        ItemStack(Items.PLAYER_FLESH),
+                        ItemStack(Items.PLAYER_BLOOD),
+                    )
+                )
+            }
+            .build()
     }
 
     object EntityType {
@@ -89,7 +125,7 @@ object Common : ModInitializer {
 
         val MEDUSA = Registry.register(
             Registry.ENTITY_TYPE,
-            Identifier(MOD_ID, "gorgon.medusa"),
+            Identifier(MOD_ID, "medusa"),
             FabricEntityTypeBuilder
                 .create(SpawnGroup.MONSTER, ::Medusa)
                 .dimensions(gorgonDimensions)
@@ -98,7 +134,7 @@ object Common : ModInitializer {
 
         val STHENO = Registry.register(
             Registry.ENTITY_TYPE,
-            Identifier(MOD_ID, "gorgon.stheno"),
+            Identifier(MOD_ID, "stheno"),
             FabricEntityTypeBuilder
                 .create(SpawnGroup.MONSTER, ::Stheno)
                 .dimensions(gorgonDimensions)
@@ -107,24 +143,33 @@ object Common : ModInitializer {
 
         val EURYALE = Registry.register(
             Registry.ENTITY_TYPE,
-            Identifier(MOD_ID, "gorgon.euryale"),
+            Identifier(MOD_ID, "euryale"),
             FabricEntityTypeBuilder
                 .create(SpawnGroup.MONSTER, ::Euryale)
                 .dimensions(gorgonDimensions)
                 .build(),
         )
+
+        val STONE_GOLEM = Registry.register(
+            Registry.ENTITY_TYPE,
+            Identifier(MOD_ID, "stone_golem"),
+            FabricEntityTypeBuilder
+                .create(SpawnGroup.MISC, ::StoneGolem)
+                .dimensions(EntityDimensions.fixed(0.6F, 1.8F))
+                .build(),
+        )
     }
 
     object Blocks {
-        val STATUE_UPPER_HALF = Block(
+        val STATUE_UPPER_HALF = StatueUpperHalf(
             FabricBlockSettings
                 .of(Material.STONE)
                 .strength(1.5F, 6.0F)
         )
 
-        val STATUE_LOWER_HALF = Block(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
+        val STATUE_LOWER_HALF = StatueLowerHalf(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
 
-        val STATUE_MEDUSA = Block(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
+        val STATUE_MEDUSA = MedusaStatue(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
     }
 
     object Items {
@@ -140,7 +185,12 @@ object Common : ModInitializer {
 
         val STATUE_LEG = Item(statueSettings)
 
-        val MEDUSA_HEAD = Item(FabricItemSettings().group(ItemGroup.COMBAT).maxCount(1))
+        val MEDUSA_HEAD = Item(
+            FabricItemSettings()
+                .group(ItemGroup.COMBAT)
+                .maxCount(1)
+                .equipmentSlot { EquipmentSlot.HEAD }
+        )
 
         val GORGON_FLESH = Item(FabricItemSettings().group(ItemGroup.FOOD).food(ROTTEN_FLESH))
 
