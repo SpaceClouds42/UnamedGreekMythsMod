@@ -12,6 +12,7 @@ import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.entity.attribute.EntityAttributeModifier
 import net.minecraft.entity.attribute.EntityAttributes
+import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.mob.HostileEntity
 import net.minecraft.entity.passive.IronGolemEntity
 import net.minecraft.item.BlockItem
@@ -36,6 +37,9 @@ import us.spaceclouds42.greek.myths.entity.gorgon.Stheno
 
 object Common : ModInitializer {
     val LOGGER: Logger = LogManager.getLogger("UnamedGreekMythsMod")
+
+    lateinit var PETRIFICATION_EFFECT: StatusEffect
+
     const val MOD_ID = "greekmyths"
 
     override fun onInitialize() {
@@ -55,7 +59,7 @@ object Common : ModInitializer {
     }
 
     private fun registerEffects() {
-        Registry.register(
+        PETRIFICATION_EFFECT = Registry.register(
             Registry.STATUS_EFFECT,
             Identifier(MOD_ID, "petrification"),
             PetrificationEffect()

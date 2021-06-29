@@ -1,8 +1,15 @@
 {
   "package": "us.spaceclouds42.greek.myths.mixin",
   "compatibilityLevel": "JAVA_16",
+  "required": true,
+  "injectors": {
+    "defaultRequire": 1
+  },
   "mixins": [
     "CombinedInventoryAccessor",
     "EmptyJavaMixin"
+  ],
+  "client": [
+    "PetrifyMouseModifier"
   ]
 }
