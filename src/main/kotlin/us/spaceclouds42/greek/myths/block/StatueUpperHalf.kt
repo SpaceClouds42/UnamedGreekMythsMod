@@ -24,12 +24,12 @@ class StatueUpperHalf(settings: Settings?) : Block(settings) {
             .with(FACING, Direction.NORTH)
     }
 
-    override fun appendProperties(stateManagerBuilder: StateManager.Builder<Block, BlockState>?) {
-        stateManagerBuilder?.add(LEFT_ARM)
-        stateManagerBuilder?.add(RIGHT_ARM)
-        stateManagerBuilder?.add(HEAD)
-        stateManagerBuilder?.add(TORSO)
-        stateManagerBuilder?.add(FACING)
+    override fun appendProperties(stateManagerBuilder: StateManager.Builder<Block, BlockState>) {
+        stateManagerBuilder.add(LEFT_ARM)
+        stateManagerBuilder.add(RIGHT_ARM)
+        stateManagerBuilder.add(HEAD)
+        stateManagerBuilder.add(TORSO)
+        stateManagerBuilder.add(FACING)
     }
 
     override fun onUse(
