@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 
-class StatueUpperHalf(settings: Settings?) : Block(settings) {
+class StatueUpperHalf(settings: Settings) : Block(settings) {
     init {
         defaultState = stateManager
             .defaultState

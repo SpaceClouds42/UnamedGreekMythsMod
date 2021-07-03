@@ -20,7 +20,7 @@ class PetrificationEffect : StatusEffect(StatusEffectType.HARMFUL, 0x4f3d25) {
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
         if (entity is PlayerEntity && !entity.world.isClient && !entity.isCreative && !entity.isSpectator && !entity.isInvulnerable) {
             val combined = entity.inventory.combined
-            repeat(4) {
+            repeat(2) {
                 entity.dropItem(entity.inventory.removeStack(Random.nextInt(0, combined.size)), true, false)
             }
 

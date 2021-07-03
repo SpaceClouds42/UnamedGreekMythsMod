@@ -177,6 +177,8 @@ object Common : ModInitializer {
             FabricBlockSettings
                 .of(Material.STONE)
                 .strength(1.5F, 6.0F)
+                .nonOpaque()
+                .suffocates { _, _, _ -> false }
         )
 
         val STATUE_LOWER_HALF = StatueLowerHalf(FabricBlockSettings.copyOf(STATUE_UPPER_HALF))
